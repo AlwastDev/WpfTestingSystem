@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31919.166
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfTestingSystem", "WpfTestingSystem\WpfTestingSystem.csproj", "{A2B7AC84-6695-4224-8B33-981B0A4C8E5C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfTestingSystem", "WpfTestingSystem\WpfTestingSystem.csproj", "{A2B7AC84-6695-4224-8B33-981B0A4C8E5C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseLibrary", "DataBaseLibrary\DataBaseLibrary.csproj", "{181E235F-A365-430D-A31B-2E443103E474}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataBaseLibrary", "DataBaseLibrary\DataBaseLibrary.csproj", "{181E235F-A365-430D-A31B-2E443103E474}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MethodsDataBaseLibrary", "MethodsDataBaseLibrary\MethodsDataBaseLibrary.csproj", "{14F893FF-E349-4F9B-AF0A-8CAE274A7084}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MethodsDataBaseLibrary", "MethodsDataBaseLibrary\MethodsDataBaseLibrary.csproj", "{14F893FF-E349-4F9B-AF0A-8CAE274A7084}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestingSystemAPI", "TestingSystemAPI\TestingSystemAPI.csproj", "{AAF50F1D-1BFF-48A3-8AFA-B1BDE69DEAB5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{14F893FF-E349-4F9B-AF0A-8CAE274A7084}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14F893FF-E349-4F9B-AF0A-8CAE274A7084}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14F893FF-E349-4F9B-AF0A-8CAE274A7084}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAF50F1D-1BFF-48A3-8AFA-B1BDE69DEAB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAF50F1D-1BFF-48A3-8AFA-B1BDE69DEAB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAF50F1D-1BFF-48A3-8AFA-B1BDE69DEAB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAF50F1D-1BFF-48A3-8AFA-B1BDE69DEAB5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

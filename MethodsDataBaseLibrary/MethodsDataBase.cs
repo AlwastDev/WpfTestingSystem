@@ -20,29 +20,24 @@ namespace MethodsDataBaseLibrary
         */
         public async Task<IEnumerable<object>> SelectManyToManyTableAsync()
         {
-            IEnumerable<object> result = await _context.Questions.Include(p => p.Answers).ToListAsync();
-            return result;
+            return await _context.Questions.Include(p => p.Answers).ToListAsync();
         }
         
         public async Task<IEnumerable<Account>> SelectOperationAccountAsync()
         {
-            IEnumerable<Account> result = await _context.Accounts.ToListAsync();
-            return result;
+            return await _context.Accounts.ToListAsync();
         }
         public async Task<IEnumerable<Answer>> SelectOperationAnswerAsync()
         {
-            IEnumerable<Answer> result = await _context.Answers.ToListAsync();
-            return result;
+            return await _context.Answers.ToListAsync();
         }
         public async Task<IEnumerable<Question>> SelectOperationQuestionAsync()
         {
-            IEnumerable<Question> result = await _context.Questions.ToListAsync();
-            return result;
+            return await _context.Questions.ToListAsync();
         }
         public async Task<IEnumerable<Test>> SelectOperationTestAsync()
         {
-            IEnumerable<Test> result = await _context.Tests.ToListAsync();
-            return result;
+            return await _context.Tests.ToListAsync();
         }
         /*
         *INSERT OPERATION
@@ -227,6 +222,27 @@ namespace MethodsDataBaseLibrary
             {
                 MessageBox.Show(ex.InnerException?.Message);
             }
+        }
+        /*****************************************************************/
+
+        public async Task<Account> SelectOperationAccountIDApiAsync(int id)
+        {
+            return await _context.Accounts.FindAsync(id);
+        }
+        
+        public async Task InsertOperationAccountApiAsync(Account account)
+        {
+            _context.Accounts.Add(account);
+            await _context.SaveChangesAsync();
+        }
+        public async Task UpdateOperationAccountApiAsync(Account account)
+        {
+            _context.Accounts.Update(account);
+            await _context.SaveChangesAsync();
+        }
+        public async Task<bool> IsIdAccount(Account account)
+        {
+            return await _context.Accounts.AnyAsync(x => x.Id == account.Id);
         }
     }
 }
