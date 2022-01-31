@@ -16,56 +16,56 @@ namespace TestingSystemAPI.Controllers
             _logger = logger;
         }
 
-        [HttpGet]
-        public async Task<IEnumerable<Account>> Get()
-        {
-            return await _crudOperation.SelectOperationAccountAsync();
-        }
-
         [HttpGet("{id}")]
-        public async Task<ActionResult<Account>> Get(int id)
+        public async Task<IActionResult> Get(int id)
         {
-            Account account = await _crudOperation.SelectOperationAccountIDApiAsync(id);
+            var account = await _crudOperation.SelectOperationAccountByIdAsync(id);
             if (account == null)
+            {
                 return NotFound();
+            }
             return new ObjectResult(account);
         }
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Account>>> Get()
+        {
+            return new ActionResult<IEnumerable<Account>>(await _crudOperation.SelectOperationAccountAsync());
+        }
+
         [HttpPost]
-        public async Task<ActionResult<Account>> Post(Account? account)
+        public async Task<IActionResult> Post([FromBody]Account? account)
         {
             if (account == null)
             {
                 return BadRequest();
             }
-
-            await _crudOperation.InsertOperationAccountApiAsync(account);
+            await _crudOperation.InsertOperationAccountAsync(account);
             return Ok(account);
         }
 
         [HttpPut]
-        public async Task<ActionResult<Account>> Put(Account? account)
+        public async Task<IActionResult> Put([FromBody]Account? account)
         {
+            var accountUpdate = await _crudOperation.UpdateOperationAccountAsync(account);
             if (account == null)
             {
                 return BadRequest();
             }
-            if (!await _crudOperation.IsIdAccount(account))
+            if (accountUpdate == null)
             {
                 return NotFound();
             }
-            await _crudOperation.UpdateOperationAccountApiAsync(account);
             return Ok(account);
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Account>> Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            Account account = await _crudOperation.SelectOperationAccountIDApiAsync(id);
+            var account = await _crudOperation.SelectOperationAccountByIdAsync(id);
             if (account == null)
             {
                 return NotFound();
             }
-
             await _crudOperation.DeleteOperationAccountAsync(id);
             return Ok(account);
         }

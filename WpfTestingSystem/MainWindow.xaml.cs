@@ -3,6 +3,7 @@ using MethodsDataBaseLibrary;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using DataBaseLibrary.Models;
 
 namespace WpfTestingSystem
 {
@@ -38,18 +39,35 @@ namespace WpfTestingSystem
                 switch (((Button)sender).Name)
                 {
                     case "BtnInsertAccount":
-                        await _crudOperation.InsertOperationAccountAsync(TbLoginAccount.Text, TbPasswordAccount.Text,
-                            int.Parse(TbMarkAccount.Text));
+                        Account account = new Account()
+                        {
+                            Login = TbLoginAccount.Text,
+                            Password = TbPasswordAccount.Text,
+                            Mark = int.Parse(TbMarkAccount.Text)
+                        };
+                        await _crudOperation.InsertOperationAccountAsync(account);
                         break;
                     case "BtnInsertAnswer":
-                        await _crudOperation.InsertOperationAnswerAsync(TbTextAnswerAnswer.Text);
+                        Answer answer = new Answer()
+                        {
+                            TextAnswer = TbTextAnswer.Text
+                        };
+                        await _crudOperation.InsertOperationAnswerAsync(answer);
                         break;
                     case "BtnInsertQuestion":
-                        await _crudOperation.InsertOperationQuestionAsync(TbTextQuestionQuestion.Text,
-                            int.Parse(TbTestIdQuestion.Text));
+                        Question question = new Question()
+                        {
+                            TextQuestion = TbTextQuestion.Text,
+                            TestId = int.Parse(TbTestIdQuestion.Text)
+                        };
+                        await _crudOperation.InsertOperationQuestionAsync(question);
                         break;
                     case "BtnInsertTest":
-                        await _crudOperation.InsertOperationTestAsync(TbNameTestTest.Text);
+                        Test test = new Test()
+                        {
+                            NameTest = TbNameTest.Text
+                        };
+                        await _crudOperation.InsertOperationTestAsync(test);
                         break;
                 }
                 await FillTables();
@@ -67,19 +85,39 @@ namespace WpfTestingSystem
                 switch (((Button)sender).Name)
                 {
                     case "BtnUpdateAccount":
-                        await _crudOperation.UpdateOperationAccountAsync(int.Parse(TbIdAccount.Text), TbLoginAccount.Text,
-                            TbPasswordAccount.Text, int.Parse(TbMarkAccount.Text));
+                        Account account = new Account()
+                        {
+                            Id = int.Parse(TbIdAccount.Text),
+                            Login = TbLoginAccount.Text,
+                            Password = TbPasswordAccount.Text,
+                            Mark = int.Parse(TbMarkAccount.Text)
+                        };
+                        await _crudOperation.UpdateOperationAccountAsync(account);
                         break;
                     case "BtnUpdateAnswer":
-                        await _crudOperation.UpdateOperationAnswerAsync(int.Parse(TbIdAnswer.Text),
-                            TbTextAnswerAnswer.Text);
+                        Answer answer = new Answer()
+                        {
+                            Id = int.Parse(TbIdAnswer.Text),
+                            TextAnswer = TbTextAnswer.Text
+                        };
+                        await _crudOperation.UpdateOperationAnswerAsync(answer);
                         break;
                     case "BtnUpdateQuestion":
-                        await _crudOperation.UpdateOperationQuestionAsync(int.Parse(TbIdQuestion.Text),
-                            TbTextQuestionQuestion.Text, int.Parse(TbTestIdQuestion.Text));
+                        Question question = new Question()
+                        {
+                            Id = int.Parse(TbIdQuestion.Text),
+                            TextQuestion = TbTextQuestion.Text,
+                            TestId = int.Parse(TbTestIdQuestion.Text)
+                        };
+                        await _crudOperation.UpdateOperationQuestionAsync(question);
                         break;
                     case "BtnUpdateTest":
-                        await _crudOperation.UpdateOperationTestAsync(int.Parse(TbIdTest.Text), TbNameTestTest.Text);
+                        Test test = new Test()
+                        {
+                            Id = int.Parse(TbIdTest.Text),
+                            NameTest = TbNameTest.Text
+                        };
+                        await _crudOperation.UpdateOperationTestAsync(test);
                         break;
                 }
                 await FillTables();

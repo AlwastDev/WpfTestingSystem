@@ -63,7 +63,7 @@
         </DockPanel>
         <DockPanel Grid.Row="3" Grid.Column="1" Width="270" DataContext="{Binding ElementName=GridAnswer, Path=SelectedItem}">
             <Label Content="TextAnswer" FontSize="15" Height="30" Width="100"/>
-            <TextBox x:Name="TbTextAnswerAnswer" Width="100" Height="40" Text="{Binding Path=(models:Answer.TextAnswer)}" FontSize="18"></TextBox>
+            <TextBox x:Name="TbTextAnswer" Width="100" Height="40" Text="{Binding Path=(models:Answer.TextAnswer)}" FontSize="18"></TextBox>
         </DockPanel>
         <!-- TEXTBOXES Question -->
         <DockPanel Grid.Row="2" Grid.Column="2" Width="270" DataContext="{Binding ElementName=GridQuestion, Path=SelectedItem}">
@@ -72,7 +72,7 @@
         </DockPanel>
         <DockPanel Grid.Row="3" Grid.Column="2" Width="270" DataContext="{Binding ElementName=GridQuestion, Path=SelectedItem}">
             <Label Content="TextQuestion" FontSize="15" Height="30" Width="100"/>
-            <TextBox x:Name="TbTextQuestionQuestion" Width="100" Height="40" Text="{Binding Path=(models:Question.TextQuestion)}" FontSize="17"></TextBox>
+            <TextBox x:Name="TbTextQuestion" Width="100" Height="40" Text="{Binding Path=(models:Question.TextQuestion)}" FontSize="17"></TextBox>
         </DockPanel>
         <DockPanel Grid.Row="4" Grid.Column="2" Width="270" DataContext="{Binding ElementName=GridQuestion, Path=SelectedItem}">
             <Label Content="TestId" FontSize="15" Height="30" Width="100"/>
@@ -85,7 +85,7 @@
         </DockPanel>
         <DockPanel Grid.Row="3" Grid.Column="3" Width="270" DataContext="{Binding ElementName=GridTest, Path=SelectedItem}">
             <Label Content="NameTest" FontSize="15" Height="30" Width="80"/>
-            <TextBox x:Name="TbNameTestTest" Width="100" Height="40" Text="{Binding Path=(models:Test.NameTest)}" FontSize="18"></TextBox>
+            <TextBox x:Name="TbNameTest" Width="100" Height="40" Text="{Binding Path=(models:Test.NameTest)}" FontSize="18"></TextBox>
         </DockPanel>
 
         <!-- BUTTONS -->
