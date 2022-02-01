@@ -9,11 +9,9 @@ namespace TestingSystemAPI.Controllers
     public class AccountController : ControllerBase
     {
         private readonly CrudOperation _crudOperation;
-        private readonly ILogger<AccountController> _logger;
-        public AccountController(ILogger<AccountController> logger)
+        public AccountController(CrudOperation crud)
         {
-            _crudOperation = new CrudOperation();
-            _logger = logger;
+            _crudOperation = crud;
         }
 
         [HttpGet("{id}")]

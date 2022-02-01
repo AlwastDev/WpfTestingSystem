@@ -9,6 +9,7 @@ namespace DataBaseLibrary.Models
     {
         [Key]
         public int Id { get; set; }
+        [Required]
         public string NameTest { get; set; }
         public ICollection<Question> Questions { get; set; }
         public Test()

@@ -8,11 +8,9 @@ namespace TestingSystemAPI.Controllers
     public class AnswerController : ControllerBase
     {
         private readonly CrudOperation _crudOperation;
-        private readonly ILogger<AnswerController> _logger;
-        public AnswerController(ILogger<AnswerController> logger)
+        public AnswerController(CrudOperation crud)
         {
-            _crudOperation = new CrudOperation();
-            _logger = logger;
+            _crudOperation = crud;
         }
 
         [HttpGet("{id}")]
@@ -34,10 +32,6 @@ namespace TestingSystemAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] Answer? answer)
         {
-            if (answer == null)
-            {
-                return BadRequest();
-            }
             await _crudOperation.InsertOperationAnswerAsync(answer);
             return Ok(answer);
         }
@@ -46,10 +40,6 @@ namespace TestingSystemAPI.Controllers
         public async Task<IActionResult> Put([FromBody] Answer? answer)
         {
             var answerUpdate = await _crudOperation.UpdateOperationAnswerAsync(answer);
-            if (answer == null)
-            {
-                return BadRequest();
-            }
             if (answerUpdate == null)
             {
                 return NotFound();

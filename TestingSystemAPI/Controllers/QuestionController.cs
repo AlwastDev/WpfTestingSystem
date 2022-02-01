@@ -8,11 +8,9 @@ namespace TestingSystemAPI.Controllers
     public class QuestionController : ControllerBase
     {
         private readonly CrudOperation _crudOperation;
-        private readonly ILogger<QuestionController> _logger;
-        public QuestionController(ILogger<QuestionController> logger)
+        public QuestionController(CrudOperation crud)
         {
-            _crudOperation = new CrudOperation();
-            _logger = logger;
+            _crudOperation = crud;
         }
 
         [HttpGet("{id}")]
