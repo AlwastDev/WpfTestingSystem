@@ -32,10 +32,6 @@ namespace TestingSystemAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] Question? question)
         {
-            if (question == null)
-            {
-                return BadRequest();
-            }
             await _crudOperation.InsertOperationQuestionAsync(question);
             return Ok(question);
         }
@@ -44,10 +40,6 @@ namespace TestingSystemAPI.Controllers
         public async Task<IActionResult> Put([FromBody] Question? question)
         {
             var questionUpdate = await _crudOperation.UpdateOperationQuestionAsync(question);
-            if (question == null)
-            {
-                return BadRequest();
-            }
             if (questionUpdate == null)
             {
                 return NotFound();

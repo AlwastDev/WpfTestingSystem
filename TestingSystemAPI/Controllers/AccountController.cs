@@ -33,10 +33,6 @@ namespace TestingSystemAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody]Account? account)
         {
-            if (account == null)
-            {
-                return BadRequest();
-            }
             await _crudOperation.InsertOperationAccountAsync(account);
             return Ok(account);
         }
@@ -45,10 +41,6 @@ namespace TestingSystemAPI.Controllers
         public async Task<IActionResult> Put([FromBody]Account? account)
         {
             var accountUpdate = await _crudOperation.UpdateOperationAccountAsync(account);
-            if (account == null)
-            {
-                return BadRequest();
-            }
             if (accountUpdate == null)
             {
                 return NotFound();
