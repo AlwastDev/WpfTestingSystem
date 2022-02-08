@@ -1,14 +1,14 @@
 ﻿using DataBaseLibrary;
 using DataBaseLibrary.Models;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using MethodsDataBaseLibrary.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace MethodsDataBaseLibrary
 {
-    public class CrudOperation
+    public class CrudOperation : ICrudOperation
     {
         private readonly TestingSystemDbContext _context;
 
@@ -85,11 +85,11 @@ namespace MethodsDataBaseLibrary
 
         #region InsertOperation
 
-        public async Task InsertOperationAccountAsync(Account account)
+        public async Task InsertOperationAccountAsync(Account accounts)
         {
             try
             {
-                _context.Accounts.Add(account);
+                _context.Accounts.Add(accounts);
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateException ex)
@@ -98,11 +98,11 @@ namespace MethodsDataBaseLibrary
             }
         }
 
-        public async Task InsertOperationAnswerAsync(Answer answer)
+        public async Task InsertOperationAnswerAsync(Answer answers)
         {
             try
             {
-                _context.Answers.Add(answer);
+                _context.Answers.Add(answers);
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateException ex)
@@ -111,11 +111,11 @@ namespace MethodsDataBaseLibrary
             }
         }
 
-        public async Task InsertOperationQuestionAsync(Question question)
+        public async Task InsertOperationQuestionAsync(Question questions)
         {
             try
             {
-                _context.Questions.Add(question);
+                _context.Questions.Add(questions);
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateException ex)
@@ -124,11 +124,11 @@ namespace MethodsDataBaseLibrary
             }
         }
 
-        public async Task InsertOperationTestAsync(Test test)
+        public async Task InsertOperationTestAsync(Test tests)
         {
             try
             {
-                _context.Tests.Add(test);
+                _context.Tests.Add(tests);
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateException ex)
@@ -145,17 +145,17 @@ namespace MethodsDataBaseLibrary
 
         #region UpdateOperation
 
-        public async Task<object> UpdateOperationAccountAsync(Account account)
+        public async Task<object> UpdateOperationAccountAsync(Account accounts)
         {
             try
             {
-                var _account = await _context.Accounts.FindAsync(account.Id);
-                if (_account == null) return null;
-                _account!.Login = account.Login;
-                _account!.Password = account.Password;
-                _account!.Mark = account.Mark;
+                var account = await _context.Accounts.FindAsync(accounts.Id);
+                if (account == null) return null;
+                account!.Login = accounts.Login;
+                account!.Password = accounts.Password;
+                account!.Mark = accounts.Mark;
                 await _context.SaveChangesAsync();
-                return _account;
+                return account;
             }
             catch (DbUpdateException ex)
             {
@@ -164,15 +164,15 @@ namespace MethodsDataBaseLibrary
             }
         }
 
-        public async Task<object> UpdateOperationAnswerAsync(Answer answer)
+        public async Task<object> UpdateOperationAnswerAsync(Answer answers)
         {
             try
             {
-                var _answer = await _context.Answers.FindAsync(answer.Id);
-                if (_answer == null) return null;
-                _answer!.TextAnswer = answer.TextAnswer;
+                var answer = await _context.Answers.FindAsync(answers.Id);
+                if (answer == null) return null;
+                answer!.TextAnswer = answers.TextAnswer;
                 await _context.SaveChangesAsync();
-                return _answer;
+                return answer;
             }
             catch (DbUpdateException ex)
             {
@@ -181,16 +181,16 @@ namespace MethodsDataBaseLibrary
             }
         }
 
-        public async Task<object> UpdateOperationQuestionAsync(Question question)
+        public async Task<object> UpdateOperationQuestionAsync(Question questions)
         {
             try
             {
-                var _question = await _context.Questions.FindAsync(question.Id);
-                if (_question == null) return null;
-                _question!.TextQuestion = question.TextQuestion;
-                _question!.TestId = question.TestId;
+                var question = await _context.Questions.FindAsync(questions.Id);
+                if (question == null) return null;
+                question!.TextQuestion = questions.TextQuestion;
+                question!.TestId = questions.TestId;
                 await _context.SaveChangesAsync();
-                return _question;
+                return question;
             }
             catch (DbUpdateException ex)
             {
@@ -199,15 +199,15 @@ namespace MethodsDataBaseLibrary
             }
         }
 
-        public async Task<object> UpdateOperationTestAsync(Test test)
+        public async Task<object> UpdateOperationTestAsync(Test tests)
         {
             try
             {
-                var _test = await _context.Tests.FindAsync(test.Id);
-                if (_test == null) return null;
-                _test!.NameTest = test.NameTest;
+                var test = await _context.Tests.FindAsync(tests.Id);
+                if (test == null) return null;
+                test!.NameTest = tests.NameTest;
                 await _context.SaveChangesAsync();
-                return _test;
+                return test;
             }
             catch (DbUpdateException ex)
             {
@@ -228,11 +228,11 @@ namespace MethodsDataBaseLibrary
         {
             try
             {
-                var _account = await _context.Accounts.FindAsync(id);
-                if (_account == null) return null;
-                _context.Accounts.Remove(_account!);
+                var account = await _context.Accounts.FindAsync(id);
+                if (account == null) return null;
+                _context.Accounts.Remove(account!);
                 await _context.SaveChangesAsync();
-                return _account;
+                return account;
             }
             catch (DbUpdateException ex)
             {
@@ -245,11 +245,11 @@ namespace MethodsDataBaseLibrary
         {
             try
             {
-                var _answer = await _context.Answers.FindAsync(id);
-                if (_answer == null) return null;
-                _context.Answers.Remove(_answer!);
+                var answer = await _context.Answers.FindAsync(id);
+                if (answer == null) return null;
+                _context.Answers.Remove(answer!);
                 await _context.SaveChangesAsync();
-                return _answer;
+                return answer;
             }
             catch (DbUpdateException ex)
             {
@@ -262,11 +262,11 @@ namespace MethodsDataBaseLibrary
         {
             try
             {
-                var _question = await _context.Questions.FindAsync(id);
-                if (_question == null) return null;
-                _context.Questions.Remove(_question!);
+                var question = await _context.Questions.FindAsync(id);
+                if (question == null) return null;
+                _context.Questions.Remove(question!);
                 await _context.SaveChangesAsync();
-                return _question;
+                return question;
             }
             catch (DbUpdateException ex)
             {
@@ -279,11 +279,11 @@ namespace MethodsDataBaseLibrary
         {
             try
             {
-                var _test = await _context.Tests.FindAsync(id);
-                if (_test == null) return null;
-                _context.Tests.Remove(_test!);
+                var test = await _context.Tests.FindAsync(id);
+                if (test == null) return null;
+                _context.Tests.Remove(test!);
                 await _context.SaveChangesAsync();
-                return _test;
+                return test;
             }
             catch (DbUpdateException ex)
             {

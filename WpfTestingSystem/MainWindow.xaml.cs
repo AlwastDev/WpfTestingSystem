@@ -1,19 +1,19 @@
 ﻿using System;
-using MethodsDataBaseLibrary;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using DataBaseLibrary.Models;
+using MethodsDataBaseLibrary.Interfaces;
 
 namespace WpfTestingSystem
 {
     public partial class MainWindow
     {
-        private readonly CrudOperation _crudOperation;
-        public MainWindow()
+        private readonly ICrudOperation _crudOperation;
+        public MainWindow(ICrudOperation crud)
         {
             InitializeComponent();
-            _crudOperation = new CrudOperation();
+            _crudOperation = crud;
             Task.Run(async () => { await Dispatcher.Invoke(FillTables); });
         }
 

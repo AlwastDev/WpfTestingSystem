@@ -1,5 +1,6 @@
 using DataBaseLibrary;
 using MethodsDataBaseLibrary;
+using MethodsDataBaseLibrary.Interfaces;
 using Microsoft.EntityFrameworkCore;
 var myAllowSpecificOrigins = "_myAllowSpecificOrigins";
 var builder = WebApplication.CreateBuilder(args);
@@ -16,9 +17,8 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: myAllowSpecificOrigins,
         corsPolicyBuilder => { corsPolicyBuilder.AllowAnyMethod().AllowAnyHeader(); });
 });
-builder.Services.AddScoped<TestingSystemDbContext>();
 
-builder.Services.AddScoped<CrudOperation>();
+builder.Services.AddScoped<ICrudOperation, CrudOperation>();
 
 var app = builder.Build();
 

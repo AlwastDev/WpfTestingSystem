@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MethodsDataBaseLibrary;
 using DataBaseLibrary.Models;
+using MethodsDataBaseLibrary.Interfaces;
 
 namespace TestingSystemAPI.Controllers
 {
@@ -8,8 +8,8 @@ namespace TestingSystemAPI.Controllers
     [Route("[controller]")]
     public class AccountController : ControllerBase
     {
-        private readonly CrudOperation _crudOperation;
-        public AccountController(CrudOperation crud)
+        private readonly ICrudOperation _crudOperation;
+        public AccountController(ICrudOperation crud)
         {
             _crudOperation = crud;
         }

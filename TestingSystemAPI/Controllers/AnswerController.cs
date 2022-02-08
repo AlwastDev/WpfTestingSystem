@@ -1,14 +1,15 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MethodsDataBaseLibrary;
 using DataBaseLibrary.Models;
+using MethodsDataBaseLibrary.Interfaces;
+
 namespace TestingSystemAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
     public class AnswerController : ControllerBase
     {
-        private readonly CrudOperation _crudOperation;
-        public AnswerController(CrudOperation crud)
+        private readonly ICrudOperation _crudOperation;
+        public AnswerController(ICrudOperation crud)
         {
             _crudOperation = crud;
         }
