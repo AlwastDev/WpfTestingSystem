@@ -3,19 +3,20 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using DataBaseLibrary.Models;
-using MethodsDataBaseLibrary.Interfaces;
+using MethodsDataBaseLibrary;
 
 namespace WpfTestingSystem
 {
     public partial class MainWindow
     {
-        private readonly ICrudOperation _crudOperation;
-        public MainWindow(ICrudOperation crud)
+        private readonly CrudOperation _crudOperation;
+        public MainWindow()
         {
             InitializeComponent();
-            _crudOperation = crud;
+            _crudOperation = new CrudOperation();
             Task.Run(async () => { await Dispatcher.Invoke(FillTables); });
         }
+       
 
         private async Task FillTables()
         {
@@ -194,5 +195,7 @@ namespace WpfTestingSystem
                 e.Column = null;
             }
         }
+
+        
     }
 }

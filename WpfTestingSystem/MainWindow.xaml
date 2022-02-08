@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:models="clr-namespace:DataBaseLibrary.Models;assembly=DataBaseLibrary"
-        mc:Ignorable="d"
+        mc:Ignorable="d" 
         Title="MainWindow" Height="600" Width="1600">
     <Grid ShowGridLines="False">
         <Grid.ColumnDefinitions>
@@ -23,37 +23,37 @@
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        
+
         <!-- NAME TABLES -->
-        <Label Grid.Row="0" Grid.Column="0" Content="Accounts" FontSize="16" Height="28" Width="80" HorizontalAlignment="Center"/>
+        <Label Grid.Row="0" Grid.Column="0" Content="Accounts" FontSize="16" HorizontalAlignment="Center" />
         <Label Grid.Row="0" Grid.Column="1" Content="Answers" FontSize="16" Height="28" Width="80" HorizontalAlignment="Center"/>
         <Label Grid.Row="0" Grid.Column="2" Content="Questions" FontSize="16" Height="28" Width="80" HorizontalAlignment="Center"/>
-        <Label Grid.Row="0" Grid.Column="3" Content="Tests" FontSize="16" Height="28" Width="80" HorizontalAlignment="Center"/>
+        <Label Grid.Row="0" Grid.Column="3" Content="Tests" FontSize="16" Height="28" Width="80" HorizontalAlignment="Center" />
         <Label Grid.Row="0" Grid.Column="4" Content="QuestionsAnswers" FontSize="16" Height="28" Width="150" HorizontalAlignment="Center"/>
-        
+
         <!-- TABLES -->
-        <DataGrid Grid.Row="1" Grid.Column="0"  IsReadOnly="True" x:Name="GridAccount" AutoGenerateColumns="True" Width="300" Height="200"></DataGrid>
-        <DataGrid Grid.Row="1" Grid.Column="1"  IsReadOnly="True" x:Name="GridAnswer" AutoGeneratingColumn="DGAnswer_OnAutoGeneratingColumn" Width="300" Height="200"></DataGrid>
-        <DataGrid Grid.Row="1" Grid.Column="2"  IsReadOnly="True" x:Name="GridQuestion" AutoGeneratingColumn="DGQuestion_OnAutoGeneratingColumn" Width="300" Height="200"></DataGrid>
-        <DataGrid Grid.Row="1" Grid.Column="3"  IsReadOnly="True" x:Name="GridTest" AutoGeneratingColumn="DGTest_OnAutoGeneratingColumn" Width="300" Height="200"></DataGrid>
-        <DataGrid Grid.Row="1" Grid.Column="4"  IsReadOnly="True" x:Name="GridQuestionsAnswers" AutoGeneratingColumn="DGQuestionAnswers_OnAutoGeneratingColumn" Width="300" Height="200"></DataGrid>
-        
+        <DataGrid Grid.Row="1" Grid.Column="0" IsReadOnly="True" x:Name="GridAccount" AutoGenerateColumns="True" Width="300" Height="200"></DataGrid>
+        <DataGrid Grid.Row="1" Grid.Column="1" IsReadOnly="True" x:Name="GridAnswer" AutoGeneratingColumn="DGAnswer_OnAutoGeneratingColumn" Width="300" Height="200" ></DataGrid>
+        <DataGrid Grid.Row="1" Grid.Column="2" IsReadOnly="True" x:Name="GridQuestion" AutoGeneratingColumn="DGQuestion_OnAutoGeneratingColumn" Width="300" Height="200" ></DataGrid>
+        <DataGrid Grid.Row="1" Grid.Column="3" IsReadOnly="True" x:Name="GridTest" AutoGeneratingColumn="DGTest_OnAutoGeneratingColumn" Width="300" Height="200"></DataGrid>
+        <DataGrid Grid.Row="1" Grid.Column="4" IsReadOnly="True" x:Name="GridQuestionsAnswers" AutoGeneratingColumn="DGQuestionAnswers_OnAutoGeneratingColumn" Width="300" Height="200"></DataGrid>
+
         <!-- TEXTBOXES -->
         <!-- TEXTBOXES Account -->
-        <DockPanel Grid.Row="2" Grid.Column="0" Width="270" DataContext="{Binding ElementName=GridAccount, Path=SelectedItem}">
-            <Label Content="ID" FontSize="15" Height="30" Width="80"/>
+        <DockPanel Grid.Row="2" Grid.Column="0" Width="270" DataContext="{Binding ElementName=GridAccount, Path=SelectedItem}" >
+            <Label Content="ID" FontSize="15" Height="30" Width="100"/>
             <TextBox x:Name="TbIdAccount" Width="100" Height="40" Text="{Binding Path=(models:Account.Id)}"  FontSize="18"></TextBox>
         </DockPanel>
         <DockPanel Grid.Row="3" Grid.Column="0" Width="270" DataContext="{Binding ElementName=GridAccount, Path=SelectedItem}">
-            <Label Content="Login" FontSize="15" Height="30" Width="80"/>
+            <Label Content="Login" FontSize="15" Height="30" Width="100"/>
             <TextBox x:Name="TbLoginAccount" Width="100" Height="40" Text="{Binding Path=(models:Account.Login)}" FontSize="18"></TextBox>
         </DockPanel>
         <DockPanel Grid.Row="4" Grid.Column="0" Width="270" DataContext="{Binding ElementName=GridAccount, Path=SelectedItem}">
-            <Label Content="Password" FontSize="15" Height="30" Width="80"/>
+            <Label Content="Password" FontSize="15" Height="30" Width="100"/>
             <TextBox x:Name="TbPasswordAccount" Width="100" Height="40" Text="{Binding Path=(models:Account.Password)}" FontSize="18"></TextBox>
         </DockPanel>
         <DockPanel Grid.Row="5" Grid.Column="0" Width="270" DataContext="{Binding ElementName=GridAccount, Path=SelectedItem}">
-            <Label Content="Mark" FontSize="15" Height="30" Width="80"/>
+            <Label Content="Mark" FontSize="15" Height="30" Width="100"/>
             <TextBox x:Name="TbMarkAccount" Width="100" Height="40" Text="{Binding Path=(models:Account.Mark)}" FontSize="18"></TextBox>
         </DockPanel>
         <!-- TEXTBOXES Answer -->
@@ -70,9 +70,9 @@
             <Label Content="ID" FontSize="15" Height="30" Width="100"/>
             <TextBox x:Name="TbIdQuestion" Width="100" Height="40" Text="{Binding Path=(models:Question.Id)}" FontSize="18"></TextBox>
         </DockPanel>
-        <DockPanel Grid.Row="3" Grid.Column="2" Width="270" DataContext="{Binding ElementName=GridQuestion, Path=SelectedItem}">
+        <DockPanel Grid.Row="3" Grid.Column="2" Width="270" DataContext="{Binding ElementName=GridQuestion, Path=SelectedItem}" >
             <Label Content="TextQuestion" FontSize="15" Height="30" Width="100"/>
-            <TextBox x:Name="TbTextQuestion" Width="100" Height="40" Text="{Binding Path=(models:Question.TextQuestion)}" FontSize="17"></TextBox>
+            <TextBox x:Name="TbTextQuestion" Width="100" Height="40" Text="{Binding Path=(models:Question.TextQuestion)}" FontSize="18"></TextBox>
         </DockPanel>
         <DockPanel Grid.Row="4" Grid.Column="2" Width="270" DataContext="{Binding ElementName=GridQuestion, Path=SelectedItem}">
             <Label Content="TestId" FontSize="15" Height="30" Width="100"/>
@@ -80,17 +80,17 @@
         </DockPanel>
         <!-- TEXTBOXES Test -->
         <DockPanel Grid.Row="2" Grid.Column="3" Width="270" DataContext="{Binding ElementName=GridTest, Path=SelectedItem}">
-            <Label Content="ID" FontSize="15" Height="30" Width="80"/>
+            <Label Content="ID" FontSize="15" Height="30" Width="100"/>
             <TextBox x:Name="TbIdTest" Width="100" Height="40" Text="{Binding Path=(models:Test.Id)}" FontSize="18"></TextBox>
         </DockPanel>
         <DockPanel Grid.Row="3" Grid.Column="3" Width="270" DataContext="{Binding ElementName=GridTest, Path=SelectedItem}">
-            <Label Content="NameTest" FontSize="15" Height="30" Width="80"/>
+            <Label Content="NameTest" FontSize="15" Height="30" Width="100"/>
             <TextBox x:Name="TbNameTest" Width="100" Height="40" Text="{Binding Path=(models:Test.NameTest)}" FontSize="18"></TextBox>
         </DockPanel>
 
         <!-- BUTTONS -->
         <!-- BUTTONS Account -->
-        <DockPanel Grid.Row="6" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <DockPanel Grid.Row="6" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" >
             <StackPanel Width="100">
                 <Button x:Name="BtnInsertAccount" Width="80" Height="50" FontSize="18" Click="Button_Click_Insert">Insert</Button>
             </StackPanel>
